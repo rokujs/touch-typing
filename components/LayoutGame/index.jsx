@@ -1,11 +1,21 @@
-import Keyboard from 'c/Keyboard'
-import React from 'react'
+import Keyboard from "c/Keyboard"
+import ViewText from "c/ViewText"
+
+import styles from "./styles"
 
 function LayoutGame() {
   return (
-    <div>
-      <Keyboard/>
-    </div>
+    <>
+      <main>
+        <section>
+          <ViewText />
+        </section>
+        <section>
+          <Keyboard />
+        </section>
+      </main>
+      <style jsx>{styles}</style>
+    </>
   )
 }
 

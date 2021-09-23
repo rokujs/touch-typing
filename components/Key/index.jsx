@@ -1,10 +1,19 @@
-import React from 'react'
+import styles from "./styles"
 
-function Key() {
+const classKey = {
+  ENTER: 'enter',
+  "SHIFT LEFT": 'shift',
+  SPACE: "space"
+}
+
+function Key({ character }) {
   return (
-    <div>
-      Key
-    </div>
+    <>
+      <div className={classKey[character]}>
+        <span>{character}</span>
+      </div>
+      <style jsx>{styles}</style>
+    </>
   )
 }
 
