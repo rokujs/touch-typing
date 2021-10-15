@@ -9,7 +9,11 @@ function Header() {
     <>
       <header>
         <div className='logo'>
-          <Image src='/logo.svg' alt='logo' width={100} height={100} />
+          <Link href='/'>
+            <a>
+              <Image src='/logo.svg' alt='logo' width={100} height={100} />
+            </a>
+          </Link>
         </div>
         <nav>
           <div className='navbar'>

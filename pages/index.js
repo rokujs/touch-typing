@@ -1,17 +1,17 @@
+import Header from 'c/Header'
+import LayoutHome from 'c/LayoutHome'
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Touch typing</title>
         <meta name="description" content="" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logo.svg" />
       </Head>
-      <main>
-        <h1>Touch typing</h1>
-      </main>
+      <Header />
+      <LayoutHome />
     </div>
   )
 }

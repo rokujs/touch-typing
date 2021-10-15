@@ -2,15 +2,17 @@ import css from "styled-jsx/css"
 
 export default css`
   div {
-    display: inline-block;
     background-color: #ccc;
-    text-align: center;
-    padding: 2rem;
     border-radius: 1rem;
+    position relative;
   }
 
   span {
     font-size: 1.8rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .enter {
