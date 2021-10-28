@@ -1,14 +1,16 @@
 import css from "styled-jsx/css"
+import { colors, size } from 's/theme'
 
 export default css`
   div {
-    background-color: #ccc;
+    background-color: ${colors.tertiary};
     border-radius: 1rem;
-    position relative;
+    position: relative;
   }
 
   span {
-    font-size: 1.8rem;
+    font-size: 2rem;
+    color: ${colors.text};
     position: absolute;
     top: 50%;
     left: 50%;

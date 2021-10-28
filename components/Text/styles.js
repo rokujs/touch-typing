@@ -1,4 +1,5 @@
 import css from 'styled-jsx/css'
+import { colors, size } from 's/theme'
 
 export default css`
   div {
@@ -9,7 +10,8 @@ export default css`
   }
 
   span {
-    font-size: 1.8rem;
+    font-size: ${size.normal};
+    color: ${colors.primary};
     font-weight: bold;
   }
 `

@@ -1,17 +1,26 @@
 import css from 'styled-jsx/css'
+import { colors } from 's/theme'
 
 export default css`
   main {
-    max-height: 100vh;
+    min-height: 100vh;
     max-width: 100vw;
+    background-color: ${colors.bg};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
   }
 
   section {
     height: 46vh;
     width: 96vw;
-    margin: 2vh 2vw;
     border-radius: 3rem;
-    border: .5rem solid #2ac;
+    background-color: ${colors.bgExtra};
     padding: 2rem 3rem;
+  }
+
+  .text {
+    width: 60vw;
   }
 `
