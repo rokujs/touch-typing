@@ -1,4 +1,4 @@
-import GridLevels from "c/GridLevels"
+import GridLessons from "c/GridLessons"
 import NavbarUser from "c/NavbarUser"
 import styles from "./styles"
 
@@ -7,9 +7,9 @@ function LayoutHome() {
     <>
       <main>
         <section>
-          <GridLevels />
-          <GridLevels />
-          <GridLevels />
+          <GridLessons />
+          <GridLessons />
+          <GridLessons />
         </section>
         <nav>
           <h1>Touch typing</h1>

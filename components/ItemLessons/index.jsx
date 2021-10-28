@@ -2,7 +2,7 @@
 
 import styles from "./styles"
 
-function ItemLevels({ title, description, image }) {
+function ItemLessons({ title, description, image }) {
   return (
     <>
       <div>
@@ -19,4 +19,4 @@ function ItemLevels({ title, description, image }) {
   )
 }
 
-export default ItemLevels
+export default ItemLessons

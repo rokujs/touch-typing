@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-import ItemLevels from "c/ItemLevels"
+import ItemLevel from 'c/ItemLevel'
 import getLevels from "services/getLevels"
 
 function GridLevels() {
@@ -9,14 +9,18 @@ function GridLevels() {
   useEffect(() => {
     getLevels().then(setLevels)
   }, [])
-  return levels.map(({ title, description, image }) => (
-    <ItemLevels
+
+  return levels.map(({ title, image, completed, points, perfect }) => (
+    <ItemLevel
       key={title}
       title={title}
-      description={description}
       image={image}
+      completed={completed}
+      points={points}
+      perfect={perfect}
     />
   ))
 }
+
 
 export default GridLevels
