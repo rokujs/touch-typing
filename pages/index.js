@@ -8,7 +8,7 @@ export default function Home() {
       <Head>
         <title>Touch typing</title>
         <meta name="description" content="" />
-        <link rel="icon" href="/logo.svg" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <Header />
       <LayoutHome />

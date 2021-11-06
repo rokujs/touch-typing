@@ -7,7 +7,7 @@
    viewBox="0 0 128.0 128.0"
    version="1.1"
    id="SVGRoot"
-   sodipodi:docname="logo_tesis_v2.svg"
+   sodipodi:docname="logo_tesis.svg"
    inkscape:version="1.1.1 (eb90963e84, 2021-10-02)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -24,12 +24,12 @@
      inkscape:document-units="px"
      showgrid="true"
      inkscape:zoom="5.6568542"
-     inkscape:cx="52.591067"
-     inkscape:cy="70.533902"
-     inkscape:window-width="1360"
-     inkscape:window-height="739"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:cx="44.812892"
+     inkscape:cy="57.098873"
+     inkscape:window-width="1920"
+     inkscape:window-height="1021"
+     inkscape:window-x="1360"
+     inkscape:window-y="30"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1">
     <inkscape:grid
@@ -49,6 +49,17 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <rect
+       style="fill:#f5bb36;fill-opacity:1;stroke:none;stroke-width:3.78;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect43756"
+       width="128"
+       height="128"
+       x="0"
+       y="0"
+       ry="64"
+       inkscape:export-filename="/home/roku_js/Documents/logo_tesis_v2.png"
+       inkscape:export-xdpi="375"
+       inkscape:export-ydpi="375" />
     <path
        style="display:inline;fill:#7c05f0;stroke:#110126;stroke-width:1.39522;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
        d="m 34.687028,47.233279 c 3.579016,0 27.319523,-12.095514 27.319523,-15.617458 0,3.445326 23.411444,17.766721 30.312952,17.766721 C 85.504092,49.382542 65,61.656766 65,65 62.294771,62.861267 36.224521,48.291517 34.687028,47.233279 Z"
