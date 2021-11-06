@@ -4,7 +4,6 @@ import { colors, size } from 's/theme'
 export default css`
   .container {
     height: 50vh;
-    width: 20vw;
     padding: 2rem;
     background-color: ${colors.bgExtra};
   }

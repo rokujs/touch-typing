@@ -1,5 +1,5 @@
 import GridLessons from "c/GridLessons"
-import NavbarUser from "c/NavbarUser"
+import LoginForm from "c/LoginForm"
 import styles from "./styles"
 
 function LayoutHome() {
@@ -13,7 +13,7 @@ function LayoutHome() {
         </section>
         <nav>
           <h1>Touch typing</h1>
-          <NavbarUser />
+          <LoginForm />
         </nav>
       </main>
       <style jsx>{styles}</style>

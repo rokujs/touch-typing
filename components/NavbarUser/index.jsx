@@ -1,3 +1,4 @@
+import FormLogin from 'c/LoginForm'
 import React from 'react'
 import styles from './styles'
 
@@ -5,7 +6,7 @@ function navbarUser() {
   return (
     <>
       <div>
-        Nose
+        <FormLogin />
       </div>
       <style jsx>
         {styles}

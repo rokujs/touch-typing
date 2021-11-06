@@ -1,11 +1,13 @@
-import FormLogin from 'c/LoginForm/index.jsx'
-import styles from './styles.js'
+import FormLogin from "c/LoginForm/index.jsx"
+import styles from "./styles.js"
 
 function LayoutLogin() {
   return (
     <>
       <main>
-        <FormLogin />
+        <div>
+          <FormLogin />
+        </div>
       </main>
       <style jsx>{styles}</style>
     </>

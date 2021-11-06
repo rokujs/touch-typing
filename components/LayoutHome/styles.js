@@ -15,7 +15,7 @@ export default css`
   }
 
   h1 {
-    margin-top: 2rem;
+    margin: 2rem 0;
     font-size: 3rem;
     text-align: center;
   }
@@ -32,6 +32,7 @@ export default css`
   }
 
   nav {
+    padding: 0 2rem;
     min-height: 80vh;
     min-width: 20vw;
     background-color: ${colors.textYellow};

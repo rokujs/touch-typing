@@ -13,4 +13,8 @@ export default css`
     gap: 3vw;
     background-color: ${colors.bg};
   }
+
+  main > div {
+    width: 20vw;
+  }
 `
