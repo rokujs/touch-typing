@@ -12,6 +12,6 @@ export const colors = {
   bgExtra: "#F5BB36",
   text: "#fff",
   textYellow: "#FFEF5E",
-  white: "#ddd",
+  white: "#dddddd",
   black: "#110126",
 }
