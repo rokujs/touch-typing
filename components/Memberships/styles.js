@@ -16,6 +16,14 @@ export default css`
   article {
     margin: 2rem 0;
   }
+
+  .prices {
+    background-color: #eeeeeeaa;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 2rem 4rem;
+  }
+
   form > div {
     margin-left: 2rem;
   }
@@ -38,12 +46,12 @@ export default css`
   }
 
   label > p > .mouth {
-    color: ${colors.tertiary};
+    color: ${colors.primary};
     font-weight: 600;
   }
 
   label > p > .year {
-    color: ${colors.textYellow};
+    color: ${colors.tertiary};
     font-weight: 600;
   }
 
@@ -90,5 +98,6 @@ export default css`
     padding: 5rem;
     height: 100%;
     width: 100%;
+    border-radius: 1rem;
   }
 `
