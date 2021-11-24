@@ -16,6 +16,10 @@ export default css`
     color: ${colors.textYellow};
   }
 
+  h3 > a:hover {
+    text-decoration: underline;
+  }
+
   h5 {
     font-size: ${size.normal};
     color: ${colors.text};

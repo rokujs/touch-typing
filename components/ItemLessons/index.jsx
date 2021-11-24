@@ -1,8 +1,9 @@
 // import Image from 'next/image'
+import Link from 'next/link'
 
 import styles from "./styles"
 
-function ItemLessons({ title, description, image }) {
+function ItemLessons({ title, description, image, url }) {
   return (
     <>
       <div>
@@ -10,7 +11,7 @@ function ItemLessons({ title, description, image }) {
           <img src={image} alt='Image of game' />
         </picture>
         <div className='text'>
-          <h3>{title}</h3>
+          <h3><Link href={url}><a>{title}</a></Link></h3>
           <h5>{description}</h5>
         </div>
       </div>

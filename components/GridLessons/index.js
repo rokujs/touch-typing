@@ -15,6 +15,7 @@ function GridLessons() {
       title={title}
       description={description}
       image={image}
+      url={`/levels`}
     />
   ))
 }

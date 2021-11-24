@@ -18,6 +18,7 @@ function GridLevels() {
       completed={completed}
       points={points}
       perfect={perfect}
+      url={`/game`}
     />
   ))
 }

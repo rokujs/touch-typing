@@ -1,20 +1,25 @@
+import Link from 'next/link'
 import { colors, size } from 's/theme'
 
-function ItemLevel({ title, image, completed, points, perfect }) {
+function ItemLevel({ title, image, completed, points, perfect, url }) {
   return (
     <>
-      <article>
-        <picture>
-          <img src={image} alt='Image of level' />
-        </picture>
-        <div className='text'>
-          <h6>{title}</h6>
-        </div>
-        <div className='points'>
-          {perfect && <p>Perfecto:</p>}
-          <p>{points}</p>
-        </div>
-      </article>
+      <Link href={url}>
+        <a>
+          <article>
+            <picture>
+              <img src={image} alt='Image of level' />
+            </picture>
+            <div className='text'>
+              <h6>{title}</h6>
+            </div>
+            <div className='points'>
+              {perfect && <p>Perfecto:</p>}
+              <p>{points}</p>
+            </div>
+          </article>
+        </a>
+      </Link>
       <style jsx>{`
         article {
           width: 100%;

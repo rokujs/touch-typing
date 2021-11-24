@@ -20,17 +20,17 @@ function Header() {
             <ul>
               <li>
                 <Link href='/statistic'>
-                  <a>Statistic</a>
+                  <a>Stats</a>
                 </Link>
               </li>
               <li>
-                <Link href='/lesson'>
+                <Link href='/levels'>
                   <a>Lesson</a>
                 </Link>
               </li>
               <li>
-                <Link href='/programming'>
-                  <a>Language programming</a>
+                <Link href='/plans'>
+                  <a>Plans</a>
                 </Link>
               </li>
             </ul>
@@ -40,7 +40,7 @@ function Header() {
               <Button to='/game'>Register</Button>
             </div>
             <div>
-              <Link href='/game'>
+              <Link href='/login'>
                 <a>Login</a>
               </Link>
             </div>
