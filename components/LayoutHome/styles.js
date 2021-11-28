@@ -21,7 +21,7 @@ export default css`
   }
 
   section {
-    min-height: 80vh;
+    max-height: 80vh;
     max-width: 70vw;
     padding: 3rem;
     background-color: ${colors.primary};
