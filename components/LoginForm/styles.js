@@ -1,9 +1,8 @@
 import css from "styled-jsx/css"
-import { colors, size } from 's/theme'
+import { colors, size } from "s/theme"
 
 export default css`
   .container {
-    height: 50vh;
     padding: 2rem;
     background-color: ${colors.bgExtra};
   }
@@ -12,6 +11,7 @@ export default css`
     text-align: center;
     font-size: ${size.big};
     color: ${colors.primary};
+    margin-bottom: 2rem;
   }
 
   .form {
@@ -19,7 +19,7 @@ export default css`
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 100%;
+    height: 50vh;
   }
 
   input {
@@ -41,5 +41,20 @@ export default css`
     font-size: ${size.normal};
     color: ${colors.secondary};
     padding: 1rem 2rem;
+  }
+
+  .register {
+    font-size: ${size.small};
+    color: ${colors.primary};
+  }
+
+  .register > a {
+    color: ${colors.tertiary};
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .register > a:hover {
+    text-decoration: underline;
   }
 `

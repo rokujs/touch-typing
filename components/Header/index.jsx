@@ -37,7 +37,7 @@ function Header() {
           </div>
           <div className='profile'>
             <div>
-              <Button to='/game'>Register</Button>
+              <Button to='/register'>Register</Button>
             </div>
             <div>
               <Link href='/login'>
