@@ -17,7 +17,7 @@ function FormLogin() {
           </button>
         </form>
         <footer className='register'>
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link href='register'>
             <a>Sign up</a>
           </Link>

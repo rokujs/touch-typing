@@ -19,7 +19,7 @@ export default css`
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 50vh;
+    height: 30vh;
   }
 
   input {
