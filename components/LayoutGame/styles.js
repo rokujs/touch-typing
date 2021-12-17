@@ -22,5 +22,7 @@ export default css`
 
   .text {
     width: 60vw;
+    display: flex;
+    flex-wrap: wrap;
   }
 `

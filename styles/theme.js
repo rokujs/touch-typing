@@ -10,7 +10,7 @@ export const colors = {
   tertiary: "#7C05F2",
   bg: "#1B0140",
   bgExtra: "#F5BB36",
-  text: "#fff",
+  text: "#ffffff",
   textYellow: "#FFEF5E",
   white: "#dddddd",
   black: "#110126",

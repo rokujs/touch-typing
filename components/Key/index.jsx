@@ -7,9 +7,6 @@ const classKey = {
 }
 
 function Key({ character, activeKey }) {
-  if (activeKey) {
-    console.log("key", character, activeKey)
-  }
   return (
     <>
       <div
