@@ -1,5 +1,5 @@
 export default function keypress(press) {
-  document.addEventListener('keydown', ((e) => captureKey(e, press)));
+  document.addEventListener('keypress', ((e) => captureKey(e, press)));
 }
 
 function captureKey(e, press) {

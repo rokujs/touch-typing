@@ -1,5 +1,5 @@
-import css from 'styled-jsx/css'
-import { colors } from 's/theme'
+import css from "styled-jsx/css"
+import { colors } from "s/theme"
 
 export default css`
   main {
@@ -22,7 +22,5 @@ export default css`
 
   .text {
     width: 60vw;
-    display: flex;
-    flex-wrap: wrap;
   }
 `

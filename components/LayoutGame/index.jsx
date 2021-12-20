@@ -7,7 +7,7 @@ function LayoutGame() {
   return (
     <>
       <main>
-        <section className="text">
+        <section className='text'>
           <ViewText />
         </section>
         <section>
