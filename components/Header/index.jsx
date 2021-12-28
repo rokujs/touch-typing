@@ -19,7 +19,7 @@ function Header() {
           <div className='navbar'>
             <ul>
               <li>
-                <Link href='/statistic'>
+                <Link href='/stats'>
                   <a>Stats</a>
                 </Link>
               </li>

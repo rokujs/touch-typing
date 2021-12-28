@@ -1,7 +1,7 @@
 import FormRegister from 'c/FormRegister'
 import styles from "./styles.js"
 
-function LayoutLogin() {
+function LayoutRegister() {
   return (
     <>
       <main>
@@ -14,4 +14,4 @@ function LayoutLogin() {
   )
 }
 
-export default LayoutLogin
+export default LayoutRegister
