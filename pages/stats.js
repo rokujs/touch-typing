@@ -5,8 +5,8 @@ import LayoutStats from "c/LayoutStats"
 import getStats from "services/getStats"
 
 export async function getServerSideProps() {
-  const res = await getStats({ id: 1})
-  const { speed, time, progress} = res
+  const res = await getStats({ id: 1 })
+  const { speed, time, progress } = res
 
   return { props: { speed, time, progress } }
 }

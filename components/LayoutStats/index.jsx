@@ -1,10 +1,10 @@
 import styles from "./styles.js"
 
-import StatsProgress from "c/StatsProgress/index.js"
-import StatsSpeed from "c/StatsSpeed/index.js"
-import StatsTime from "c/StatsTime/index.js"
+import StatsProgress from "c/StatsProgress"
+import StatsSpeed from "c/StatsSpeed"
+import StatsTime from "c/StatsTime"
 
-function LayoutStats({ speed, time, progress}) {
+function LayoutStats({ speed, time, progress }) {
   return (
     <>
       <main>

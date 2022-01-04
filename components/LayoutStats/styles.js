@@ -5,6 +5,7 @@ export default css`
   main {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 300px 1fr;
     background-color: ${colors.bg};
     padding: 3rem 25rem;
     min-height: 93vh;
@@ -13,7 +14,8 @@ export default css`
   }
 
   main > div {
-    background-color: #fff;
+    background-color: ${colors.primary};
+    padding: 2rem 3rem;
   }
 
   .speed {
