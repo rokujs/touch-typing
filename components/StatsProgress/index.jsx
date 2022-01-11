@@ -1,8 +1,19 @@
+import styles from "./styles"
+import Keyboard from "c/Keyboard"
+
 export default function StatsProgress({ stats }) {
-  console.log('progress', stats)
+  console.log("progress", stats)
   return (
-    <div>
-      <h5>Progress</h5>
-    </div>
+    <>
+      <div>
+        <Keyboard
+          info={true}
+          speed={stats.speedCharacter}
+          time={stats.timeCharacter}
+          accuracy={stats.accuracyCharacter}
+        />
+      </div>
+      <style jsx>{styles}</style>
+    </>
   )
 }

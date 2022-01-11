@@ -5,8 +5,9 @@ import styles from "./styles"
 import Key from "c/Key"
 import getKeys from "services/getKeys"
 import keypress from "services/KeyPress"
+import KeyInfo from "c/KeyInfo"
 
-function Keyboard() {
+function Keyboard({ info = false, speed, time, accuracy }) {
   const [keys, setKeys] = useState([])
   const [press, setPress] = useState("")
   const [isActive, setIsActive] = useState(false)
@@ -28,8 +29,10 @@ function Keyboard() {
     <>
       <div>
         {keys.length > 0 &&
-          keys.map((itemKey, index) => (
-            <Key
+          keys.map((itemKey, index) => {
+            const lowerKey = itemKey.toLowerCase()
+            return !info
+            ? <Key
               key={index}
               character={itemKey}
               activeKey={
@@ -40,7 +43,14 @@ function Keyboard() {
                   : false
               }
             />
-          ))}
+            : <KeyInfo
+              key={index}
+              character={itemKey}
+              time={time[lowerKey]}
+              accuracy={accuracy[lowerKey]}
+              speed={speed[lowerKey]}
+             />
+          })}
       </div>
       <style jsx>{styles}</style>
     </>

@@ -3,13 +3,12 @@ import Time from "c/Time"
 import { colors, size } from "s/theme"
 
 export default function StatsTime({ stats }) {
-  console.table(stats)
-  const { day, week, month, average } = stats
+  const { day, week, month } = stats
   return (
     <>
       <div>
         <h5>Time</h5>
-        <div className="container">
+        <div className='container'>
           <HeaderTime />
           <Time minutes={day} />
         </div>
@@ -21,7 +20,6 @@ export default function StatsTime({ stats }) {
         }
 
         .container {
-          //background-color: ${colors.white};
           margin-top: 1.4rem;
         }
       `}</style>
