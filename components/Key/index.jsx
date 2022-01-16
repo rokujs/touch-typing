@@ -1,3 +1,4 @@
+import React from 'react'
 import styles from "./styles"
 
 const classKey = {
@@ -21,4 +22,6 @@ function Key({ character, activeKey }) {
   )
 }
 
-export default Key
+export default React.memo(Key, (prevProps, nextProps) => {
+  return (prevProps.activeKey === nextProps.activeKey)
+})
