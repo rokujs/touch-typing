@@ -7,14 +7,14 @@ export default css`
     max-width: 100vw;
     background-color: ${colors.bg};
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
   }
 
   section {
     height: 46vh;
-    width: 96vw;
     border-radius: 3rem;
     background-color: ${colors.bgExtra};
     padding: 2rem 3rem;
@@ -22,5 +22,13 @@ export default css`
 
   .text {
     width: 60vw;
+  }
+
+  .word, .menu {
+    background: none;
+  }
+
+  .keyboard {
+    width: 96vw;
   }
 `

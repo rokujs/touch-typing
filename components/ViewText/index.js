@@ -1,43 +1,61 @@
 import { useState, useEffect } from "react"
 
-import Text from "c/Text"
+import Word from "c/Word"
 
 import getText from "services/getText"
 import keypress from "services/KeyPress"
 
 function ViewText() {
-  const [newParagraph, setNewParagraph] = useState([])
+  const [newListWords, setNewListWords] = useState([])
   const [character, setCharacter] = useState(0)
-  const [isActiveCharacter, setIsActiveCharacter] = useState([])
+  const [word, setWord] = useState(0)
+  const [isActiveListWords, setIsActiveListWords] = useState([])
   const [press, setPress] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     getText().then(data => {
-      setNewParagraph(data)
-      setIsActiveCharacter(data.map(() => true))
+      setNewListWords(data)
+      setIsActiveListWords(data.map(arr => arr.map(() => true)))
+      setIsLoading(true)
     })
     keypress(setPress)
   }, [])
 
   useEffect(() => {
-    if (press === newParagraph[character]) {
-      setCharacter(c => (c += 1))
-      setIsActiveCharacter(arr => {
-        arr[character] = false
-        return arr
-      })
-      setPress('')
+    if (isLoading) {
+      if (
+        press === newListWords[word][character] &&
+        isActiveListWords[word][character]
+      ) {
+        const newIsActiveListWords = isActiveListWords;
+        newIsActiveListWords[word][character] = false;
+        setCharacter(char => (char += 1))
+        setIsActiveListWords(newIsActiveListWords)
+        if (newIsActiveListWords[word].every(w => w === false)) {
+          setWord(w => (w += 1))
+          console.log("word", word)
+          setCharacter(0)
+        }
+        setPress("")
+      }
     }
-  }, [press, newParagraph, character])
+  }, [press, newListWords, word, character, isActiveListWords, isLoading])
+
+  if (!isLoading) {
+    return <div>Is loading</div>
+  }
 
   return (
     <>
-      {newParagraph.map((itemParagraph, index) => (
-        <Text
+      {newListWords.map((itemListWord, index) => (
+        <Word
           key={index}
-          paragraph={itemParagraph}
-          active={isActiveCharacter[index]}
-          onFocus={character === index}
+          word={itemListWord}
+          characterOnFocus={character}
+          active={isActiveListWords[index]}
+          onFocus={word === index}
+          press={press}
         />
       ))}
     </>

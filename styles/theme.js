@@ -14,4 +14,6 @@ export const colors = {
   textYellow: "#FFEF5E",
   white: "#dddddd",
   black: "#110126",
+  error: "#FF0000",
+  blackError: "#FF0000",
 }
