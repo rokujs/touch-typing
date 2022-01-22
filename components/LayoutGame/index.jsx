@@ -5,24 +5,26 @@ import ViewText from "c/ViewText"
 import WordCalculator from "c/WordCalculator"
 
 import styles from "./styles"
-import keypress from 'services/KeyPress'
+import keypress from "services/KeyPress"
 
 function LayoutGame() {
-  const [press, setPress] = useState('')
+  const [press, setPress] = useState("")
 
   useEffect(() => {
     keypress(setPress)
   }, [])
-  
+
   return (
     <>
       <main>
-        <section>
-            <div className='menu'></div>
-            <div className='text'>
-              <ViewText press={press} setPress={setPress} />
-            </div>
-            <div className='word'>{/* <WordCalculator /> */}</div>
+        <section className='view'>
+          <div className='menu'></div>
+          <div className='text'>
+            <ViewText press={press} setPress={setPress} />
+          </div>
+          <div className='word'>
+            <WordCalculator />
+          </div>
         </section>
         <section className='keyboard'>
           <Keyboard press={press} setPress={setPress} />
