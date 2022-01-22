@@ -1,7 +1,6 @@
 import styles from "./styles.js"
 
 export default function StatsSpeed({ stats }) {
-  console.log("speed", stats)
   return (
     <>
       <div>

@@ -36,7 +36,6 @@ function ViewText({ press, setPress }) {
 
         if (newIsActiveListWords[word].every(w => w === false)) {
           setWord(w => (w += 1))
-          console.log("word", word)
           setCharacter(0)
         }
       }

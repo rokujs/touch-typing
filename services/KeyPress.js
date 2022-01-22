@@ -4,6 +4,5 @@ export default function keypress(press) {
 
 function captureKey(e, press) {
   const key = e.key;
-  console.log(key);
   press(key);
 }

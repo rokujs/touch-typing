@@ -2,7 +2,6 @@ import styles from "./styles"
 import Keyboard from "c/Keyboard"
 
 export default function StatsProgress({ stats }) {
-  console.log("progress", stats)
   return (
     <>
       <div>
