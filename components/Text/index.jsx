@@ -1,8 +1,7 @@
 import React from "react"
 import { colors, size } from "s/theme"
 
-function Text({ character, active, onFocus, press }) {
-  const failed = character !== press
+function Text({ character, active, onFocus, failed }) {
   return (
     <>
       <div className="character">
@@ -51,5 +50,7 @@ function Text({ character, active, onFocus, press }) {
 }
 
 export default React.memo(Text, (prevProps, nextProps) => {
-  return (prevProps.active === nextProps.active && nextProps.onFocus === prevProps.onFocus)
+  return (prevProps.active === nextProps.active && nextProps.onFocus === prevProps.onFocus) && nextProps.failed === prevProps.failed
 })
+
+// export default Text

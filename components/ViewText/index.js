@@ -12,6 +12,7 @@ function ViewText() {
   const [isActiveListWords, setIsActiveListWords] = useState([])
   const [press, setPress] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [pressFailed, setPressFailed] = useState(false)
 
   useEffect(() => {
     getText().then(data => {
@@ -28,19 +29,33 @@ function ViewText() {
         press === newListWords[word][character] &&
         isActiveListWords[word][character]
       ) {
-        const newIsActiveListWords = isActiveListWords;
-        newIsActiveListWords[word][character] = false;
+        setPress("")
+
+        const newIsActiveListWords = isActiveListWords
+        newIsActiveListWords[word][character] = false
+
         setCharacter(char => (char += 1))
         setIsActiveListWords(newIsActiveListWords)
+
         if (newIsActiveListWords[word].every(w => w === false)) {
           setWord(w => (w += 1))
           console.log("word", word)
           setCharacter(0)
         }
-        setPress("")
       }
     }
   }, [press, newListWords, word, character, isActiveListWords, isLoading])
+
+  useEffect(() => {
+    if (isLoading) {
+      if (press !== newListWords[word][character] && press !== "") {
+        setPressFailed(true)
+        setTimeout(() => {
+          setPressFailed(false)
+        }, 500)
+      }
+    }
+  }, [press, isLoading])
 
   if (!isLoading) {
     return <div>Is loading</div>
@@ -55,7 +70,7 @@ function ViewText() {
           characterOnFocus={character}
           active={isActiveListWords[index]}
           onFocus={word === index}
-          press={press}
+          characterFailed={!pressFailed}
         />
       ))}
     </>

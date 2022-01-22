@@ -1,18 +1,18 @@
 import React from "react"
 
-import Text from 'c/Text'
+import Text from "c/Text"
 import { colors, size } from "s/theme"
-function Word({ word, active, onFocus, press, characterOnFocus }) {
+function Word({ word, active, onFocus, characterOnFocus, characterFailed }) {
   return (
     <>
-      <div className="word">
+      <div className='word'>
         {word.map((character, index) => (
           <Text
             key={index}
             character={character}
             active={active[index]}
             onFocus={index === characterOnFocus && onFocus}
-            press={press}
+            failed={characterFailed}
           />
         ))}
       </div>
@@ -22,11 +22,10 @@ function Word({ word, active, onFocus, press, characterOnFocus }) {
         }
       `}</style>
     </>
-  );
-
+  )
 }
 
 export default React.memo(Word, (prevProps, nextProps) => {
-  return (!prevProps.onFocus && !nextProps.onFocus)
+  return (!prevProps.onFocus && !nextProps.onFocus) && prevProps.characterFailed === nextProps.characterFailed
 })
 // export default Word
