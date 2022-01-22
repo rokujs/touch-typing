@@ -3,14 +3,12 @@ import { useState, useEffect } from "react"
 import Word from "c/Word"
 
 import getText from "services/getText"
-import keypress from "services/KeyPress"
 
-function ViewText() {
+function ViewText({ press, setPress }) {
   const [newListWords, setNewListWords] = useState([])
   const [character, setCharacter] = useState(0)
   const [word, setWord] = useState(0)
   const [isActiveListWords, setIsActiveListWords] = useState([])
-  const [press, setPress] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [pressFailed, setPressFailed] = useState(false)
 
@@ -20,7 +18,6 @@ function ViewText() {
       setIsActiveListWords(data.map(arr => arr.map(() => true)))
       setIsLoading(true)
     })
-    keypress(setPress)
   }, [])
 
   useEffect(() => {
