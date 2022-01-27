@@ -1,8 +1,16 @@
 import { useState, useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
+
+import {
+  updateMinutes,
+  textInfoSelector,
+  startGame,
+  updateWords,
+  updatePpm,
+} from "reducers/textInfoReducer"
+import getText from "services/getText"
 
 import Word from "c/Word"
-
-import getText from "services/getText"
 
 function ViewText({ press, setPress }) {
   const [newListWords, setNewListWords] = useState([])
@@ -11,12 +19,17 @@ function ViewText({ press, setPress }) {
   const [isActiveListWords, setIsActiveListWords] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [pressFailed, setPressFailed] = useState(false)
+  const [firstPress, setFirstPress] = useState(false)
+
+  const textInfo = useSelector(textInfoSelector)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     getText().then(data => {
       setNewListWords(data)
       setIsActiveListWords(data.map(arr => arr.map(() => true)))
       setIsLoading(true)
+      dispatch(updateWords(data.length))
     })
   }, [])
 
@@ -26,6 +39,10 @@ function ViewText({ press, setPress }) {
         press === newListWords[word][character] &&
         isActiveListWords[word][character]
       ) {
+        if (!firstPress) {
+          setFirstPress(true)
+          dispatch(startGame())
+        }
         setPress("")
 
         const newIsActiveListWords = isActiveListWords
@@ -37,6 +54,8 @@ function ViewText({ press, setPress }) {
         if (newIsActiveListWords[word].every(w => w === false)) {
           setWord(w => (w += 1))
           setCharacter(0)
+          dispatch(updateMinutes())
+          dispatch(updatePpm(word + 1))
         }
       }
     }
