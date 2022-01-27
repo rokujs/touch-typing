@@ -4,7 +4,7 @@ import { textInfoSelector } from "reducers/textInfoReducer"
 
 import styles from "./styles"
 
-export default function WordCalculator({ minutes, average = 100, word }) {
+export default function WordCalculator() {
   const textInfo = useSelector(textInfoSelector)
 
   return (
@@ -17,7 +17,7 @@ export default function WordCalculator({ minutes, average = 100, word }) {
         </div>
         <div>
           <h6>Accuracy</h6>
-          <span className='average'>{average}</span>
+          <span className='average'>{textInfo.average}</span>
           <small>%</small>
         </div>
       </div>
