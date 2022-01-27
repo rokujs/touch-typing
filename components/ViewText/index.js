@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { useRouter } from "next/router"
 
 import {
   updateMinutes,
@@ -7,7 +8,7 @@ import {
   startGame,
   updateCharacters,
   updatePpm,
-  updateAverage
+  updateAverage,
 } from "reducers/textInfoReducer"
 import getText from "services/getText"
 
@@ -21,7 +22,9 @@ function ViewText({ press, setPress }) {
   const [isLoading, setIsLoading] = useState(false)
   const [pressFailed, setPressFailed] = useState(false)
   const [firstPress, setFirstPress] = useState(false)
-  const [countFailed, setCountFailed] = useState(0);
+  const [countFailed, setCountFailed] = useState(0)
+
+  const router = useRouter()
 
   const textInfo = useSelector(textInfoSelector)
   const dispatch = useDispatch()
@@ -38,7 +41,7 @@ function ViewText({ press, setPress }) {
   }, [])
 
   useEffect(() => {
-    if (isLoading) {
+    if (isLoading && newListWords.length > word) {
       if (
         press === newListWords[word][character] &&
         isActiveListWords[word][character]
@@ -62,15 +65,19 @@ function ViewText({ press, setPress }) {
           dispatch(updatePpm(word + 1))
           dispatch(updateAverage(countFailed))
         }
+
+        if (word === newListWords.length - 1) {
+          router.push("/gameOver")
+        }
       }
     }
   }, [press, newListWords, word, character, isActiveListWords, isLoading])
 
   useEffect(() => {
-    if (isLoading) {
+    if (isLoading && newListWords.length > word) {
       if (press !== newListWords[word][character] && press !== "") {
         setPressFailed(true)
-        setCountFailed((c) => c + 1)
+        setCountFailed(c => c + 1)
         setTimeout(() => {
           setPressFailed(false)
         }, 500)

@@ -5,13 +5,17 @@ import ViewText from "c/ViewText"
 import WordCalculator from "c/WordCalculator"
 
 import styles from "./styles"
-import keypress from "services/KeyPress"
+import keypress, { unsubscribe } from "services/KeyPress"
 
 function LayoutGame() {
   const [press, setPress] = useState("")
 
   useEffect(() => {
     keypress(setPress)
+
+    return () => {
+      unsubscribe()
+    }
   }, [])
 
   return (
