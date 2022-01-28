@@ -25,8 +25,6 @@ function ViewText({ press, setPress }) {
   const [countFailed, setCountFailed] = useState(0)
 
   const router = useRouter()
-
-  const textInfo = useSelector(textInfoSelector)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -66,7 +64,7 @@ function ViewText({ press, setPress }) {
           dispatch(updateAverage(countFailed))
         }
 
-        if (word === newListWords.length - 1) {
+        if (word === newListWords.length - 1 && newIsActiveListWords[word].every(w => w === false)) {
           router.push("/gameOver")
         }
       }
