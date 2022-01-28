@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import { useRouter } from "next/router"
 
 import {
   updateMinutes,
-  textInfoSelector,
+  updateVisualTime,
   startGame,
   updateCharacters,
   updatePpm,
@@ -46,7 +46,7 @@ function ViewText({ press, setPress }) {
       ) {
         if (!firstPress) {
           setFirstPress(true)
-          dispatch(startGame())
+          dispatch(startGame('/game'))
         }
         setPress("")
 
@@ -66,6 +66,10 @@ function ViewText({ press, setPress }) {
 
         if (word === newListWords.length - 1 && newIsActiveListWords[word].every(w => w === false)) {
           router.push("/gameOver")
+          dispatch(updateMinutes())
+          dispatch(updatePpm(word + 1))
+          dispatch(updateAverage(countFailed))
+          dispatch(updateVisualTime())
         }
       }
     }
