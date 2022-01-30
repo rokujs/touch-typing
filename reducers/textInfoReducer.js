@@ -41,7 +41,6 @@ export const textInfoReducer = createSlice({
     updateVisualTime: state => {
       const now = new Date().getTime()
       const min = (now - state.start) / 1000 / 60
-      console.log("min", min)
       let minutes = 0
       while (min > 0.6) {
         minutes += 1
