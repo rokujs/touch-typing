@@ -60,14 +60,14 @@ function ViewText({ press, setPress }) {
           setWord(w => (w += 1))
           setCharacter(0)
           dispatch(updateMinutes())
-          dispatch(updatePpm(word + 1))
+          dispatch(updatePpm({words: word + 1, failures: countFailed}))
           dispatch(updateAverage(countFailed))
         }
 
         if (word === newListWords.length - 1 && newIsActiveListWords[word].every(w => w === false)) {
           router.push("/gameOver")
           dispatch(updateMinutes())
-          dispatch(updatePpm(word + 1))
+          dispatch(updatePpm({words: word + 1, failures: countFailed}))
           dispatch(updateAverage(countFailed))
           dispatch(updateVisualTime())
         }

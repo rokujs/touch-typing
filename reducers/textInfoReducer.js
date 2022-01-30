@@ -16,7 +16,8 @@ export const textInfoReducer = createSlice({
   reducers: {
     updatePpm: (state, action) => {
       const { minutes } = state
-      state.ppm = Math.round(action.payload / minutes)
+      const ppm = Math.round(action.payload.words / minutes)
+      state.ppm = ppm - action.payload.failures
     },
     startGame: (state, action) => {
       state.start = new Date().getTime()
