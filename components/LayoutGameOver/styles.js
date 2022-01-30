@@ -13,6 +13,9 @@ export default css`
     font-size: 6rem;
     color: ${colors.tertiary};
     text-align: center;
+    animation-name: fading;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
   }
 
   main > div {
@@ -46,6 +49,8 @@ export default css`
   section {
     height: 10rem;
     border-bottom: 0.6rem solid ${colors.textYellow};
+    animation-name: border_bottom;
+    animation-duration: 1s;
   }
 
   .bottons {
@@ -59,5 +64,23 @@ export default css`
     width: 100%;
     background-color: ${colors.tertiary};
     padding: 3rem 0;
+  }
+
+  @keyframes fading {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes border_bottom {
+    0% {
+      border-bottom: 0 solid ${colors.textYellow};
+    }
+    100% {
+      border-bottom: 0.8rem solid ${colors.textYellow};
+    }
   }
 `
