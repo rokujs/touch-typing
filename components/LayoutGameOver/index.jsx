@@ -28,15 +28,17 @@ export default function LayoutGameOver() {
           <section>
             <div>
               <h3>Time</h3>
-              <span className='time'>{textInfo.visualMinutes}:{textInfo.visualSeconds}</span>
+              <span className='time'>
+                {textInfo.visualMinutes}:{textInfo.visualSeconds}
+              </span>
               <small>minutes</small>
             </div>
           </section>
-          <section className='bottons'>
-            <Button to='/'>Back to Home</Button>
-            <Button to={textInfo.level}>Play Again</Button>
-          </section>
         </div>
+        <footer className='bottons'>
+          <Button to='/'>Back to Home</Button>
+          <Button to={textInfo.level}>Play Again</Button>
+        </footer>
       </main>
       <style jsx>{styles}</style>
     </>
