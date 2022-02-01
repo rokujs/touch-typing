@@ -1,5 +1,6 @@
 const LEVELS = [
   {
+    level: 1,
     title: "The little prince",
     completed: false,
     points: 10,
@@ -7,6 +8,7 @@ const LEVELS = [
     image: "/test.svg",
   },
   {
+    level: 2,
     title: "Hansel and Gretel",
     completed: true,
     points: 0,
@@ -14,6 +16,7 @@ const LEVELS = [
     image: "/test.svg",
   },
   {
+    level: 3,
     title: "Red Riding Hood",
     completed: false,
     points: 24,
@@ -21,6 +24,7 @@ const LEVELS = [
     image: "/test.svg",
   },
   {
+    level: 4,
     title: "The ugly duckling",
     completed: true,
     points: 1000,
@@ -28,6 +32,7 @@ const LEVELS = [
     image: "/test.svg",
   },
   {
+    level: 5,
     title: "Alice's Adventures in wonderland",
     completed: true,
     points: 3456,

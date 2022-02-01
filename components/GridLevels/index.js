@@ -10,7 +10,7 @@ function GridLevels() {
     getLevels().then(setLevels)
   }, [])
 
-  return levels.map(({ title, image, completed, points, perfect }) => (
+  return levels.map(({ level, title, image, completed, points, perfect }) => (
     <ItemLevel
       key={title}
       title={title}
@@ -18,6 +18,7 @@ function GridLevels() {
       completed={completed}
       points={points}
       perfect={perfect}
+      level={level}
       url={`/game`}
     />
   ))

@@ -1,20 +1,35 @@
-import Link from 'next/link'
-import { colors, size } from 's/theme'
+import Link from "next/link"
+import Image from "next/image"
 
-function ItemLevel({ title, image, completed, points, perfect, url }) {
+import Star from "icons/Star"
+import { colors, size } from "s/theme"
+
+function ItemLevel({ level, title, image, completed, points, perfect, url }) {
   return (
     <>
       <Link href={url}>
         <a>
           <article>
-            <picture>
-              <img src={image} alt='Image of level' />
+            <picture className='img'>
+              <Image
+                src={image}
+                width='240'
+                height='230'
+                alt='Image of level'
+              />
             </picture>
             <div className='text'>
-              <h6>{title}</h6>
+              <h6>
+                <span>{level}.</span>
+                {title}
+                {perfect && (
+                  <span>
+                    <Star height='25' width='25' />
+                  </span>
+                )}
+              </h6>
             </div>
             <div className='points'>
-              {perfect && <p>Perfecto:</p>}
               <p>{points}</p>
             </div>
           </article>
@@ -33,35 +48,40 @@ function ItemLevel({ title, image, completed, points, perfect, url }) {
         picture {
           width: inherit;
           height: inherit;
-
         }
 
-        picture img {
-          height: 100%;
-          width: 100%;
-          position: absolute;
-          object-fit: cover;
-          z-index: -1;
+        .img {
           filter: grayscale(${completed ? 0 : 100}%);
         }
 
         .text {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+          padding-top: 0.8rem;
+          padding-left: 0.8rem;
+          paddign-right: 0.5rem;
+          padding-bottom: 1rem;
           position: absolute;
           top: 0;
           left: 0;
           right: 0;
           background: ${colors.bgExtra}aa;
           min-height: 3rem;
+          max-height: 6rem;
         }
 
         .text > h6 {
-          text-align: center;
+          text-align: left;
           color: ${colors.text};
           font-size: ${size.normal};
+        }
+
+        .text > h6 > span {
+          display: inline-block;
+          margin-left: 0.5rem;
+        }
+
+        .text > h6 > span:first-child {
+          display: inline-block;
+          margin-right: 0.5rem;
         }
 
         .points {
