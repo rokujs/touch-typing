@@ -26,6 +26,10 @@ function Word({ word, active, onFocus, characterOnFocus, characterFailed }) {
 }
 
 export default React.memo(Word, (prevProps, nextProps) => {
-  return (!prevProps.onFocus && !nextProps.onFocus) && prevProps.characterFailed === nextProps.characterFailed
+  return (
+    !prevProps.onFocus &&
+    !nextProps.onFocus &&
+    prevProps.characterFailed === nextProps.characterFailed
+  )
 })
 // export default Word

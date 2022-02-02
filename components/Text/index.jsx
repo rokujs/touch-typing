@@ -1,13 +1,24 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { colors, size } from "s/theme"
 
 function Text({ character, active, onFocus, failed }) {
+  const [wasFailed, setWasFailed] = useState(false)
+
+  useEffect(() => {
+    if (onFocus && !failed) {
+      setWasFailed(true)
+    }
+  }, [failed])
   return (
     <>
-      <div className="character">
+      <div className={`character ${wasFailed && "failed"}`}>
         <span>{character}</span>
       </div>
       <style jsx>{`
+        .failed {
+          border-bottom: 0.5rem solid ${colors.error};
+        }
+
         .character {
           display: inline-block;
           position: relative;
@@ -19,7 +30,7 @@ function Text({ character, active, onFocus, failed }) {
           animation-iteration-count: infinite;
         }
 
-        .character > span {
+        span {
           font-size: ${size.normal};
           color: ${active ? colors.primary : colors.text};
           font-weight: bold;
@@ -50,7 +61,11 @@ function Text({ character, active, onFocus, failed }) {
 }
 
 export default React.memo(Text, (prevProps, nextProps) => {
-  return (prevProps.active === nextProps.active && nextProps.onFocus === prevProps.onFocus) && nextProps.failed === prevProps.failed
+  return (
+    prevProps.active === nextProps.active &&
+    nextProps.onFocus === prevProps.onFocus &&
+    nextProps.failed === prevProps.failed
+  )
 })
 
 // export default Text
