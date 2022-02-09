@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import Keyboard from "c/Keyboard"
 import ViewText from "c/ViewText"
 import WordCalculator from "c/WordCalculator"
+import MenuGamePage from "c/MenuGamePage"
 
 import styles from "./styles"
 import keypress, { unsubscribe } from "services/KeyPress"
@@ -22,7 +23,9 @@ function LayoutGame() {
     <>
       <main>
         <section className='view'>
-          <div className='menu'></div>
+          <div className='menu'>
+            <MenuGamePage />
+          </div>
           <div className='text'>
             <ViewText press={press} setPress={setPress} />
           </div>
