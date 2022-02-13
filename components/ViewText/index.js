@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useRouter } from "next/router"
 
 import {
@@ -9,23 +9,38 @@ import {
   updateCharacters,
   updatePpm,
   updateAverage,
+  textInfoSelector,
 } from "reducers/textInfoReducer"
 import getText from "services/getText"
 
 import Word from "c/Word"
 
 function ViewText({ press, setPress }) {
-  const [newListWords, setNewListWords] = useState([])
   const [character, setCharacter] = useState(0)
   const [word, setWord] = useState(0)
   const [isActiveListWords, setIsActiveListWords] = useState([])
+  const [countFailed, setCountFailed] = useState(0)
+
+  const [newListWords, setNewListWords] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [pressFailed, setPressFailed] = useState(false)
   const [firstPress, setFirstPress] = useState(false)
-  const [countFailed, setCountFailed] = useState(0)
 
   const router = useRouter()
   const dispatch = useDispatch()
+  const textInfo = useSelector(textInfoSelector)
+
+  useEffect(() => {
+    if (isLoading && textInfo.reset) {
+      setCountFailed(0)
+      setIsActiveListWords(newListWords.map(arr => arr.map(() => true)))
+      setCharacter(0)
+      setWord(0)
+      setPressFailed(false)
+      setFirstPress(false)
+      console.log("reset")
+    }
+  }, [textInfo.reset, isLoading])
 
   useEffect(() => {
     getText().then(data => {
@@ -46,9 +61,10 @@ function ViewText({ press, setPress }) {
       ) {
         if (!firstPress) {
           setFirstPress(true)
-          dispatch(startGame('/game'))
+          dispatch(startGame("/game"))
         }
         setPress("")
+        setPressFailed(false)
 
         const newIsActiveListWords = isActiveListWords
         newIsActiveListWords[word][character] = false
@@ -60,14 +76,17 @@ function ViewText({ press, setPress }) {
           setWord(w => (w += 1))
           setCharacter(0)
           dispatch(updateMinutes())
-          dispatch(updatePpm({words: word + 1, failures: countFailed}))
+          dispatch(updatePpm({ words: word + 1, failures: countFailed }))
           dispatch(updateAverage(countFailed))
         }
 
-        if (word === newListWords.length - 1 && newIsActiveListWords[word].every(w => w === false)) {
+        if (
+          word === newListWords.length - 1 &&
+          newIsActiveListWords[word].every(w => w === false)
+        ) {
           router.push("/gameOver")
           dispatch(updateMinutes())
-          dispatch(updatePpm({words: word + 1, failures: countFailed}))
+          dispatch(updatePpm({ words: word + 1, failures: countFailed }))
           dispatch(updateAverage(countFailed))
           dispatch(updateVisualTime())
         }
@@ -80,9 +99,6 @@ function ViewText({ press, setPress }) {
       if (press !== newListWords[word][character] && press !== "") {
         setPressFailed(true)
         setCountFailed(c => c + 1)
-        setTimeout(() => {
-          setPressFailed(false)
-        }, 500)
       }
     }
   }, [press, isLoading])
@@ -101,6 +117,7 @@ function ViewText({ press, setPress }) {
           active={isActiveListWords[index]}
           onFocus={word === index}
           characterFailed={!pressFailed}
+          reset={textInfo.reset}
         />
       ))}
     </>

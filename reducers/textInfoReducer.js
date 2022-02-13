@@ -8,6 +8,7 @@ const INIT_STATE = {
   start: 0,
   average: 100,
   level: "",
+  reset: false,
 }
 
 export const textInfoReducer = createSlice({
@@ -25,6 +26,7 @@ export const textInfoReducer = createSlice({
       state.ppm = 0
       state.minutes = 0
       state.average = 100
+      state.reset = false
     },
     updateMinutes: state => {
       const now = new Date().getTime()
@@ -51,6 +53,9 @@ export const textInfoReducer = createSlice({
       state.visualSeconds = (seconds > 9 ? "" : "0") + seconds
       state.visualMinutes = (minutes > 9 ? "" : "0") + minutes
     },
+    resetLevel: state => {
+      state.reset = true
+    },
   },
 })
 
@@ -63,6 +68,7 @@ export const {
   updateCharacters,
   updateAverage,
   updateVisualTime,
+  resetLevel,
 } = textInfoReducer.actions
 
 export default textInfoReducer.reducer

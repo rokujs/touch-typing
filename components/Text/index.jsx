@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react"
 import { colors, size } from "s/theme"
 
-function Text({ character, active, onFocus, failed }) {
+function Text({ character, active, onFocus, failed, reset }) {
   const [wasFailed, setWasFailed] = useState(false)
+
+
+  useEffect(() => {
+    setWasFailed(false)
+  }, [reset])
 
   useEffect(() => {
     if (onFocus && !failed) {
@@ -11,7 +16,7 @@ function Text({ character, active, onFocus, failed }) {
   }, [failed])
   return (
     <>
-      <div className={`character ${wasFailed && "failed"}`}>
+      <div className={`character ${wasFailed ? "failed" : ""}`}>
         <span>{character}</span>
       </div>
       <style jsx>{`
@@ -64,7 +69,8 @@ export default React.memo(Text, (prevProps, nextProps) => {
   return (
     prevProps.active === nextProps.active &&
     nextProps.onFocus === prevProps.onFocus &&
-    nextProps.failed === prevProps.failed
+    nextProps.failed === prevProps.failed &&
+    prevProps.reset === nextProps.reset
   )
 })
 

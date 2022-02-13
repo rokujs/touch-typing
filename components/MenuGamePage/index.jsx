@@ -1,19 +1,21 @@
-import { useRouter } from 'next/router';
-;
+import { useRouter } from "next/router"
+import { useDispatch } from "react-redux"
 
+import { resetLevel } from "reducers/textInfoReducer"
 
 import styles from "./styles"
 import Repeat from "icons/Repeat"
 import Return from "icons/Return"
 
 export default function MenuGamePage() {
-  const router = useRouter();
+  const router = useRouter()
+  const dispatch = useDispatch()
 
   const handleRepeat = () => {
-    console.log("Repeat")
+    dispatch(resetLevel())
   }
   const handleReturn = () => {
-    router.push('/levels')
+    router.push("/levels")
   }
 
   return (

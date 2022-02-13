@@ -2,7 +2,7 @@ import React from "react"
 
 import Text from "c/Text"
 import { colors, size } from "s/theme"
-function Word({ word, active, onFocus, characterOnFocus, characterFailed }) {
+function Word({ word, active, onFocus, characterOnFocus, characterFailed, reset }) {
   return (
     <>
       <div className='word'>
@@ -13,6 +13,7 @@ function Word({ word, active, onFocus, characterOnFocus, characterFailed }) {
             active={active[index]}
             onFocus={index === characterOnFocus && onFocus}
             failed={characterFailed}
+            reset={reset}
           />
         ))}
       </div>
@@ -29,7 +30,8 @@ export default React.memo(Word, (prevProps, nextProps) => {
   return (
     !prevProps.onFocus &&
     !nextProps.onFocus &&
-    prevProps.characterFailed === nextProps.characterFailed
+    prevProps.characterFailed === nextProps.characterFailed &&
+    prevProps.reset === nextProps.reset
   )
 })
 // export default Word
