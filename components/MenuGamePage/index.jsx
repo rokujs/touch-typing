@@ -1,19 +1,23 @@
+import { useState } from "react"
 import { useRouter } from "next/router"
 import { useDispatch } from "react-redux"
 
-import { resetLevel } from "reducers/textInfoReducer"
+import { reset } from "reducers/gameReducer"
 
 import styles from "./styles"
 import Repeat from "icons/Repeat"
 import Return from "icons/Return"
 
-export default function MenuGamePage() {
+function MenuGamePage() {
+  const [click, setClick] = useState(true)
   const router = useRouter()
   const dispatch = useDispatch()
 
-  const handleRepeat = () => {
-    dispatch(resetLevel())
+  const handleClickRepeat = () => {
+    if (click) dispatch(reset())
+    setClick(false)
   }
+
   const handleReturn = () => {
     router.push("/levels")
   }
@@ -28,7 +32,10 @@ export default function MenuGamePage() {
             </button>
           </li>
           <li>
-            <button onClick={handleRepeat}>
+            <button
+              onMouseEnter={() => setClick(true)}
+              onClick={handleClickRepeat}
+            >
               <Repeat height='25' width='25' />
             </button>
           </li>
@@ -38,3 +45,5 @@ export default function MenuGamePage() {
     </>
   )
 }
+
+export default MenuGamePage

@@ -11,99 +11,101 @@ import {
   updateAverage,
   textInfoSelector,
 } from "reducers/textInfoReducer"
+import {
+  init,
+  start,
+  update,
+  updateWord,
+  updateCountFailed,
+  gameSelector,
+} from "reducers/gameReducer"
+
 import getText from "services/getText"
 
 import Word from "c/Word"
 
 function ViewText({ press, setPress }) {
-  const [character, setCharacter] = useState(0)
-  const [word, setWord] = useState(0)
-  const [isActiveListWords, setIsActiveListWords] = useState([])
-  const [countFailed, setCountFailed] = useState(0)
-
   const [newListWords, setNewListWords] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
   const [pressFailed, setPressFailed] = useState(false)
-  const [firstPress, setFirstPress] = useState(false)
 
   const router = useRouter()
   const dispatch = useDispatch()
   const textInfo = useSelector(textInfoSelector)
-
-  useEffect(() => {
-    if (isLoading && textInfo.reset) {
-      setCountFailed(0)
-      setIsActiveListWords(newListWords.map(arr => arr.map(() => true)))
-      setCharacter(0)
-      setWord(0)
-      setPressFailed(false)
-      setFirstPress(false)
-      console.log("reset")
-    }
-  }, [textInfo.reset, isLoading])
+  const game = useSelector(gameSelector)
 
   useEffect(() => {
     getText().then(data => {
       const charactersNumber = data.reduce((acc, cur) => acc + cur.length, 0)
 
       setNewListWords(data)
-      setIsActiveListWords(data.map(arr => arr.map(() => true)))
-      setIsLoading(true)
+      dispatch(init(data))
       dispatch(updateCharacters(charactersNumber))
     })
   }, [])
 
   useEffect(() => {
-    if (isLoading && newListWords.length > word) {
+    if (game.isLoading && newListWords.length > game.word) {
       if (
-        press === newListWords[word][character] &&
-        isActiveListWords[word][character]
+        press === newListWords[game.word][game.character] &&
+        game.isActiveListWords[game.word][game.character]
       ) {
-        if (!firstPress) {
-          setFirstPress(true)
+        if (!game.firstPress) {
+          dispatch(start())
           dispatch(startGame("/game"))
         }
         setPress("")
         setPressFailed(false)
 
-        const newIsActiveListWords = isActiveListWords
-        newIsActiveListWords[word][character] = false
+        const newIsActiveListWords = game.isActiveListWords.map(arr =>
+          arr.map(item => item)
+        )
 
-        setCharacter(char => (char += 1))
-        setIsActiveListWords(newIsActiveListWords)
+        newIsActiveListWords[game.word][game.character] = false
 
-        if (newIsActiveListWords[word].every(w => w === false)) {
-          setWord(w => (w += 1))
-          setCharacter(0)
+        dispatch(update(newIsActiveListWords))
+
+        if (newIsActiveListWords[game.word].every(w => w === false)) {
+          dispatch(updateWord())
           dispatch(updateMinutes())
-          dispatch(updatePpm({ words: word + 1, failures: countFailed }))
-          dispatch(updateAverage(countFailed))
+          dispatch(
+            updatePpm({ words: game.word + 1, failures: game.countFailed })
+          )
+          dispatch(updateAverage(game.countFailed))
         }
 
         if (
-          word === newListWords.length - 1 &&
-          newIsActiveListWords[word].every(w => w === false)
+          game.word === newListWords.length - 1 &&
+          newIsActiveListWords[game.word].every(w => w === false)
         ) {
           router.push("/gameOver")
           dispatch(updateMinutes())
-          dispatch(updatePpm({ words: word + 1, failures: countFailed }))
-          dispatch(updateAverage(countFailed))
+          dispatch(
+            updatePpm({ words: game.word + 1, failures: game.countFailed })
+          )
+          dispatch(updateAverage(game.countFailed))
           dispatch(updateVisualTime())
         }
       }
     }
-  }, [press, newListWords, word, character, isActiveListWords, isLoading])
+  }, [
+    press,
+    newListWords,
+    game.word,
+    game.character,
+    game.isActiveListWords,
+    game.isLoading,
+  ])
 
   useEffect(() => {
-    if (isLoading && newListWords.length > word) {
-      if (press !== newListWords[word][character] && press !== "") {
+    if (game.isLoading && newListWords.length > game.word) {
+      if (press !== newListWords[game.word][game.character] && press !== "") {
         setPressFailed(true)
-        setCountFailed(c => c + 1)
+        dispatch(updateCountFailed())
       }
     }
-  }, [press, isLoading])
+  }, [press, game.isLoading])
 
-  if (!isLoading) {
+  if (!game.isLoading) {
     return <div>Is loading</div>
   }
 
@@ -113,9 +115,9 @@ function ViewText({ press, setPress }) {
         <Word
           key={index}
           word={itemListWord}
-          characterOnFocus={character}
-          active={isActiveListWords[index]}
-          onFocus={word === index}
+          characterOnFocus={game.character}
+          active={game.isActiveListWords[index]}
+          onFocus={game.word === index}
           characterFailed={!pressFailed}
           reset={textInfo.reset}
         />
