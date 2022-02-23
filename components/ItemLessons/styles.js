@@ -5,11 +5,6 @@ export default css`
   div {
     background-color: ${colors.tertiary};
   }
-  picture > img {
-    width: 100%;
-    height:23rem;
-    object-fit: cover;
-  }
 
   h3 {
     font-size: ${size.big};

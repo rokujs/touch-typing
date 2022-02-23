@@ -1,5 +1,5 @@
-// import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image"
+import Link from "next/link"
 
 import styles from "./styles"
 
@@ -8,10 +8,25 @@ function ItemLessons({ title, description, image, url }) {
     <>
       <div>
         <picture>
-          <img src={image} alt='Image of game' />
+          <Link href={url}>
+            <a>
+              <Image
+                className='image'
+                width={408}
+                height={230}
+                objectFit='cover'
+                src={image}
+                alt='Image of game'
+              />
+            </a>
+          </Link>
         </picture>
         <div className='text'>
-          <h3><Link href={url}><a>{title}</a></Link></h3>
+          <h3>
+            <Link href={url}>
+              <a>{title}</a>
+            </Link>
+          </h3>
           <h5>{description}</h5>
         </div>
       </div>

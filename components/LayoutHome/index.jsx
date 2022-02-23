@@ -8,8 +8,6 @@ function LayoutHome() {
       <main>
         <section>
           <GridLessons />
-          <GridLessons />
-          <GridLessons />
         </section>
         <nav>
           <h1>Touch typing</h1>

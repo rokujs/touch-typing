@@ -9,6 +9,7 @@ function GridLessons() {
   useEffect(() => {
     getLessons().then(setLessons)
   }, [])
+  
   return lessons.map(({ title, description, image }) => (
     <ItemLessons
       key={title}
