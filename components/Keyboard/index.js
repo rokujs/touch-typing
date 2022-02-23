@@ -6,23 +6,12 @@ import Key from "c/Key"
 import getKeys from "services/getKeys"
 import KeyInfo from "c/KeyInfo"
 
-function Keyboard({ info = false, speed, time, accuracy, press, setPress }) {
+function Keyboard({ info = false, speed, time, accuracy, press }) {
   const [keys, setKeys] = useState([])
-  const [isActive, setIsActive] = useState(false)
 
   useEffect(() => {
     getKeys().then(setKeys)
   }, [])
-
-  useEffect(() => {
-    if (press) {
-      setIsActive(true)
-      setTimeout(() => {
-        setIsActive(false)
-        setPress("")
-      }, 2000)
-    }
-  }, [press])
 
   return (
     <>
@@ -36,8 +25,7 @@ function Keyboard({ info = false, speed, time, accuracy, press, setPress }) {
                 character={itemKey}
                 activeKey={
                   press.toLowerCase() ===
-                    (itemKey === "SPACE" ? " " : itemKey.toLowerCase()) &&
-                  isActive
+                  (itemKey === "SPACE" ? " " : lowerKey)
                     ? true
                     : false
                 }

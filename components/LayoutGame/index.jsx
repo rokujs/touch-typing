@@ -34,7 +34,7 @@ function LayoutGame() {
           </div>
         </section>
         <section className='keyboard'>
-          <Keyboard press={press} setPress={setPress} />
+          <Keyboard press={press} />
         </section>
       </main>
       <style jsx>{styles}</style>

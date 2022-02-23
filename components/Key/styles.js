@@ -1,5 +1,5 @@
 import css from "styled-jsx/css"
-import { colors, size } from 's/theme'
+import { colors, size } from "s/theme"
 
 export default css`
   div {
@@ -18,11 +18,13 @@ export default css`
   }
 
   .active {
-    background-color: ${colors.primary};
+    animation-name: activeKey;
+    animation-duration: 1s;
   }
 
   .active > span {
-    color: ${colors.textYellow};
+    animation-name: activeCharacter;
+    animation-duration: 1s;
   }
 
   .enter {
@@ -38,5 +40,17 @@ export default css`
   .space {
     grid-row: 5;
     grid-column: 4 / 10;
+  }
+
+  @keyframes activeKey {
+    0% {
+      background-color: ${colors.primary};
+    }
+  }
+
+  @keyframes activeCharacter {
+    0% {
+      color: ${colors.textYellow};
+    }
   }
 `
